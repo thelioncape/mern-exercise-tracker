@@ -1,10 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import DatePicker, { registerLocale } from 'react-datepicker';
-import enGB from 'date-fns/locale/en-GB';
-import "react-datepicker/dist/react-datepicker.css";
-
-registerLocale('en-GB', enGB);
+import ModernDatepicker from 'react-modern-datepicker';
 
 export default class CreateExercise extends Component {
     constructor(props) {
@@ -125,10 +121,12 @@ export default class CreateExercise extends Component {
                     <div className="form-group">
                         <label>Date: </label>
                         <div>
-                            <DatePicker
-                                selected={this.state.date}
-                                onChange={this.onChangeDate}
-                                locale="en-GB"
+                            <ModernDatepicker
+                                date={this.state.date}
+                                format={'DD/MM/YYYY'}
+                                showBorder
+                                onChange={date => this.onChangeDate(date)}
+                                placeholder={'Select a date'}
                             />
                         </div>
                     </div>
